@@ -9,6 +9,13 @@ import { TiArrowBackOutline } from "react-icons/ti";
 export default function FCPSDetail() {
   const [allStudent, setAllStudent] = useState([]);
   let navigate = useNavigate();
+
+  let userName = sessionStorage.getItem("user_role");
+  console.log(userName);
+  if (userName == "user") {
+    navigate("/home");
+  }
+
   let { id } = useParams();
   console.log("id is: ", id);
 
@@ -37,16 +44,16 @@ export default function FCPSDetail() {
       <div className="text-3xl font-semibold text-slate-800 text-center mt-10">
         FCPS-II Trainee Detail
       </div>
-      <div className="text-sm font-semibold text-slate-500 text-center mt-1 mb-1">
+      <div className="font-semibold text-slate-500 text-center mt-1 mb-1">
         FCPS-II Trainee Detail
       </div>
 
       <div className="flex justify-end mr-16 mb-5">
         <Link
           to={"/current-fcps"}
-          className="text-white bg-slate-900 hover:bg-slate-800 font-semibold transition duration-100 px-6 py-1 rounded-md"
+          className="text-white flex bg-slate-900 hover:bg-slate-800 font-semibold transition duration-100 px-6 py-1 rounded-md"
         >
-          <TiArrowBackOutline />
+          <TiArrowBackOutline className="mt-1 mr-1" />
           <span>Back</span>
         </Link>
       </div>

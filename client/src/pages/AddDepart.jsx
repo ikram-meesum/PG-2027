@@ -9,6 +9,12 @@ import toast, { Toaster } from "react-hot-toast";
 export default function AddDepart() {
   const [depart, setDepart] = useState([]);
 
+  let userName = sessionStorage.getItem("user_role");
+  console.log(userName);
+  if (userName == "user") {
+    navigate("/home");
+  }
+
   const {
     register,
     watch,

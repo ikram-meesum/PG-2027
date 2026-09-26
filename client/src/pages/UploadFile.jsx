@@ -8,12 +8,20 @@ export default function UploadFile() {
   const { id } = useParams();
   console.log(id);
 
+  let [cDate, setCDate] = useState("");
+
+  let userName = sessionStorage.getItem("user_role");
+  console.log(userName);
+  if (userName == "user") {
+    navigate("/home");
+  }
+
   const [f_name, setFileName] = useState("");
   const [pdf_file, setPDFfile] = useState([]);
   const [allStudent, setAllStudent] = useState([]);
 
   async function getData(id) {
-    console.log("id: ", id);
+    // console.log("id: ", id);
     try {
       const res = await axios(`http://localhost:3001/fcpspresent/${id}`);
       const data = await res.data;
@@ -24,19 +32,22 @@ export default function UploadFile() {
     }
   }
 
-  // this.state = {
-  //           pdf_file : []
-  //       }
-
-  // this.state = {
-  //           f_name : ''
-  //       }
+  const updateData = async () => {
+    try {
+      const response = await axios.post(`http://localhost:3001/upload/${id}`, {
+        upload: "YES",
+      });
+      console.log("Success:", response.data);
+    } catch (err) {
+      console.error("Submission failed:", err);
+    }
+  };
 
   const showFiles = () => {
     axios
       .get("http://localhost:3001/showfiles/" + id)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setPDFfile(response.data);
         // this.setState({ pdf_file: response.data });
         //console.log(this.state.pdf_file.length);
@@ -46,6 +57,10 @@ export default function UploadFile() {
         console.log(error);
       });
   };
+
+  let cdate = [];
+  cdate.push(new Date());
+  // console.log("cdate: ", cdate);
 
   useEffect(() => {
     axios
@@ -60,30 +75,40 @@ export default function UploadFile() {
       });
     showFiles();
     getData(id);
-  }, [pdf_file]);
+  }, [cDate]);
 
   const fileUpload = (e) => {
+    console.log("file name: ", f_name);
+    setCDate(cdate);
+
     e.preventDefault();
     console.log("test");
     var formData = new FormData();
     var imagefile = document.querySelector("#file");
     // console.log(imagefile);
     formData.append("filename", imagefile.files[0]);
-    console.log("form data: ", formData);
 
-    const config = {
-      headers: { "Content-Type": "multipart/form-data" },
-    };
+    if (imagefile.files.length === 0) {
+      alert("Please select a valid file.");
+    } else {
+      console.log("File is selected!");
+      console.log("form data: ", formData);
 
-    axios
-      .post("http://localhost:3001/upload_dox/" + id, formData, config)
-      .then(function (response) {
-        console.log("open file: ", response.data);
-        alert("Your selected file has been uploaded on server!");
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      const config = {
+        headers: { "Content-Type": "multipart/form-data" },
+      };
+
+      axios
+        .post("http://localhost:3001/upload_dox/" + id, formData, config)
+        .then(function (response) {
+          // console.log("open file: ", response.data);
+          updateData();
+          alert("Your selected file has been uploaded on server!");
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
   };
 
   const onchangeImage = (e) => {

@@ -142,7 +142,7 @@ export default function Home() {
           {/* sixth */}
           <div>
             <div>
-              <Link to={"/"}>
+              <Link to={"/home"}>
                 <div className="relative border border-gray-200 hover:border-blue-300 hover:bg-blue-50 hover:cursor-pointer flex w-full bg-gray-50 max-w-[20rem] flex-col rounded-xl bg-clip-border text-gray-700 shadow-none">
                   <div className="relative mx-0 mt-4 flex items-center gap-4 overflow-hidden rounded-xl bg-transparent bg-clip-border pt-0 pb-3 text-gray-700 shadow-none">
                     <CiSun className="pl-3" size={"63px"} />

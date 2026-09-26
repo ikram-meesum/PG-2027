@@ -5,30 +5,32 @@ import { ip } from "../components/ipAddress";
 import Navbar from "../components/Navbar";
 import dayjs from "dayjs";
 import toast, { Toaster } from "react-hot-toast";
+import { MdEditDocument } from "react-icons/md";
+import { Link } from "react-router";
+import { ClipLoader } from "react-spinners";
 
 export default function AddSupervisor() {
   const [depart, setDepart] = useState([]);
   const [supervisor, setSupervisor] = useState([]);
   const [dname, setDName] = useState("");
 
-  const [isDisabled, setIsDisabled] = useState(true);
-  //   const navigate = useNavigate();
   let userName = sessionStorage.getItem("user_role");
-  console.log("line 17: ", userName);
-  // if (userName == "user") {
-  //   setIsDisabled(false);
-  //   console.log("no");
-  // } else {
-  //   setIsDisabled(true);
-  //   console.log("yes");
-  // }
+  console.log(userName);
+  if (userName == "user") {
+    navigate("/home");
+  }
+
+  let [loading, setLoading] = useState(true);
+  const [isDisabled, setIsDisabled] = useState(true);
 
   const getDepart = () => {
+    setLoading(true);
     axios
       .get("http://" + ip.address + ":3001/depart")
       .then((response) => {
         //console.log("depart:", response.data);
         setDepart(response.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.log("Error from get depart function: ", error);
@@ -36,11 +38,13 @@ export default function AddSupervisor() {
   };
 
   const getSupervisorData = () => {
+    setLoading(true);
     axios
       .get("http://" + ip.address + ":3001/current_supervisors")
       .then((response) => {
         console.log("supervisor: ", response.data);
         setSupervisor(response.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.log("Error from use effect function: ", error);
@@ -48,8 +52,10 @@ export default function AddSupervisor() {
   };
 
   useEffect(() => {
+    setLoading(true);
     getDepart();
     getSupervisorData();
+    setLoading(false);
   }, []);
 
   const {
@@ -61,27 +67,33 @@ export default function AddSupervisor() {
 
   const onSubmit = (data) => {
     console.log("all data: ", data);
+    console.log("depart name: ", data.depart);
+
     if (userName === "user") {
       alert("You are not not allowed for insert record.");
     } else {
-      axios
-        .post("http://" + ip.address + ":3001/current_supervisors", {
-          super_name: data.supervisor,
-          depart_id: data.depart,
-          email: data.email,
-          mobile: data.mobile,
-          emp_id: data.empno,
-          // ins_name: data.ins_name,
-        })
-        .then((response) => {
-          console.log("INSERTED: ", response.data);
+      if (data.depart == "PLEASE SELECT") {
+        alert("Please select a department");
+      } else {
+        axios
+          .post("http://" + ip.address + ":3001/current_supervisors", {
+            super_name: data.supervisor,
+            depart_id: data.depart,
+            email: data.email,
+            mobile: data.mobile,
+            emp_id: data.empno,
+            // ins_name: data.ins_name,
+          })
+          .then((response) => {
+            console.log("INSERTED: ", response.data);
 
-          getSupervisorData();
-          toast.success("Supervisor inserted successfully.");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+            getSupervisorData();
+            toast.success("Supervisor inserted successfully.");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     }
     // navigate("/loading");
   };
@@ -99,6 +111,17 @@ export default function AddSupervisor() {
           },
         }}
       />
+
+      <div className="flex justify-center bg-amber-100 items-center">
+        <ClipLoader
+          color={"red"}
+          loading={loading}
+          // cssOverride={override}
+          size={150}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      </div>
 
       <h2 className="text-3xl text-center font-bold text-slate-700 mt-9 mb-2">
         All Supervisors Record
@@ -181,6 +204,7 @@ export default function AddSupervisor() {
               className="border border-gray-200 h-10  mt-1 rounded px-4 w-full bg-gray-50"
               {...register("depart")}
             >
+              <option value={"PLEASE SELECT"}>PLEASE SELECT</option>
               {depart.map((itm, ind) => {
                 return (
                   <option key={ind} value={itm._id}>
@@ -250,6 +274,10 @@ export default function AddSupervisor() {
                 <th scope="col" className="pr-1 py-3">
                   STATUS
                 </th>
+
+                <th scope="col" className="pr-3 py-3">
+                  EDIT
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -296,6 +324,11 @@ export default function AddSupervisor() {
                         {dayjs(student.createdAt).format("DD-MMM-YYYY")}
                       </td> */}
                       <td className="mr-3 py-3">{student.ispresent}</td>
+                      <td className="mr-3 py-3 hover:cursor-pointer">
+                        <Link to={`/supervisor/${student._id}`}>
+                          <MdEditDocument color="#0abde3" size={"18px"} />
+                        </Link>
+                      </td>
                     </tr>
                   );
                 })}

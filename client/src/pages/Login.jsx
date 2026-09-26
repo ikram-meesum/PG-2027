@@ -51,12 +51,14 @@ export default function Login() {
           /> */}
         </div>
         {/* <!-- Right: Login Form --> */}
-        <div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
+        <div className="lg:p-36 md:p-52 w-full lg:w-1/2">
           {/* NEW FORM */}
 
-          <div className="w-72">
+          <div className="w-96">
             {/* <!-- Heading --> */}
-            <h1 className="text-2xl font-semibold">Welcome back</h1>
+            <h1 className="text-2xl text-slate-700 font-semibold">
+              School of Postgraduate Studies
+            </h1>
             <small className="text-gray-400">
               Please enter your valid login credentials
             </small>

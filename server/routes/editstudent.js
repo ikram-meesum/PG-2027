@@ -52,7 +52,7 @@ route.put("/:id", async (req, res) => {
       religion: req.body.religion,
       remarks: req.body.remarks,
     },
-    { useFindAndModify: false }
+    { useFindAndModify: false },
   );
   //doc.name; // 'Jean-Luc Picard'
   //doc.age; // undefined

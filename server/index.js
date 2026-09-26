@@ -48,6 +48,8 @@ const supervisor_Wise_Total = require("./routes/supervisor_wise_report");
 const no_present = require("./routes/no_present");
 const yearWiseReport = require("./routes/year_wise_report");
 
+const editSupervisor = require("./routes/editsupervisor");
+const uploadUpdate = require("./routes/upload");
 //const editFeeRoute = require('./routes/editfee');
 
 // app.get('/' (req, res) => {
@@ -64,6 +66,8 @@ app.use("/", loginRoute);
 app.use("/fcpspresent", studentRoute); // DONE
 app.use("/addfcps", addMBBSRoute); // DONE
 app.use("/editfcps", editStudent); // DONE
+app.use("/upload", uploadUpdate); // DONE
+app.use("/editsupervisor", editSupervisor); // DONE
 
 //app.use('/fees', feesRoute);
 

@@ -47,6 +47,7 @@ let fcpsSchema = mongoose.Schema(
     remarks: { type: String, uppercase: true },
     religion: String,
     category: { type: String, default: "FCPS" },
+    upload: { type: String, default: "NO" },
     // qrcode: [attendanceScheme],
     // fees: [feeScheme],
   },

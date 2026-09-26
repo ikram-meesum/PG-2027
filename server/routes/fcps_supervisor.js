@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 let FCPS_Supervisor = require("../models/fcps_supervisor.modal");
 
-route.get("/", (req, res, next) => {
+route.get("/", (req, res) => {
   FCPS_Supervisor.find()
     .populate("depart_id", "ward_name")
     .exec()

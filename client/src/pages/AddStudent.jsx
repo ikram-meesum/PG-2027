@@ -212,7 +212,7 @@ export default function AddStudent() {
               //   placeholder="Enter Password"
             />
             {errors.mobile && (
-              <p className="text-red-700">Mobile is atleast 6 characters.</p>
+              <p className="text-red-700">Mobile is atleast 11 characters.</p>
             )}
           </div>
 
