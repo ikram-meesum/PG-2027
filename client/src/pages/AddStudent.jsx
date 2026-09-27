@@ -16,6 +16,9 @@ export default function AddStudent() {
 
   let userName = sessionStorage.getItem("user_role");
   console.log(userName);
+  if (userName == null) {
+    navigate("/");
+  }
   if (userName == "user") {
     navigate("/home");
   }

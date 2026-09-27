@@ -11,6 +11,9 @@ export default function EditSupervisor() {
 
   let userName = sessionStorage.getItem("user_role");
   console.log(userName);
+  if (userName == null) {
+    navigate("/");
+  }
   if (userName == "user") {
     navigate("/login");
   }

@@ -12,8 +12,8 @@ export default function FCPSDetail() {
 
   let userName = sessionStorage.getItem("user_role");
   console.log(userName);
-  if (userName == "user") {
-    navigate("/home");
+  if (userName == null) {
+    navigate("/");
   }
 
   let { id } = useParams();

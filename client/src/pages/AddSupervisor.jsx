@@ -8,14 +8,20 @@ import toast, { Toaster } from "react-hot-toast";
 import { MdEditDocument } from "react-icons/md";
 import { Link } from "react-router";
 import { ClipLoader } from "react-spinners";
+import { redirect, useNavigate } from "react-router";
 
 export default function AddSupervisor() {
   const [depart, setDepart] = useState([]);
   const [supervisor, setSupervisor] = useState([]);
   const [dname, setDName] = useState("");
 
+  const navigate = useNavigate();
+
   let userName = sessionStorage.getItem("user_role");
   console.log(userName);
+  if (userName == null) {
+    redirect("/");
+  }
   if (userName == "user") {
     navigate("/home");
   }

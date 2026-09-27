@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import axios from "axios";
 // import path from "path";
 
 export default function UploadFile() {
+  let navigate = useNavigate();
+
   const { id } = useParams();
   console.log(id);
 
@@ -12,6 +14,9 @@ export default function UploadFile() {
 
   let userName = sessionStorage.getItem("user_role");
   console.log(userName);
+  if (userName == null) {
+    navigate("/");
+  }
   if (userName == "user") {
     navigate("/home");
   }

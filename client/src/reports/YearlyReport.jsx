@@ -118,7 +118,7 @@ export default function YearlyReport() {
                     </th>
 
                     <th scope="col" className="py-3 pr-2">
-                      ACTION
+                      CONTACT
                     </th>
                   </tr>
                 </thead>

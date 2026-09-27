@@ -5,12 +5,18 @@ import { ip } from "../components/ipAddress";
 import Navbar from "../components/Navbar";
 import dayjs from "dayjs";
 import toast, { Toaster } from "react-hot-toast";
+import { redirect, useNavigate } from "react-router";
 
 export default function AddDepart() {
   const [depart, setDepart] = useState([]);
 
+  const navigate = useNavigate();
+
   let userName = sessionStorage.getItem("user_role");
   console.log(userName);
+  if (userName == null) {
+    redirect("/");
+  }
   if (userName == "user") {
     navigate("/home");
   }
@@ -18,6 +24,7 @@ export default function AddDepart() {
   const {
     register,
     watch,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm();
@@ -54,6 +61,7 @@ export default function AddDepart() {
             // createdOn: response.data.createdOn,
           },
         ]);
+        reset();
         // setDepart(null);
         // alert("Data Inserted");
       })
