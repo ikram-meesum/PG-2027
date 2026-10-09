@@ -114,7 +114,7 @@ export default function AddStudent() {
         .catch((error) => {
           console.log(error);
         });
-      navigate("/current-fcps");
+      navigate("/test/fcps");
     }
   };
 
@@ -299,13 +299,13 @@ export default function AddStudent() {
             <label>DATE OF BIRTH</label>
             <input
               type="date"
-              {...register("dob", { required: true })}
+              {...register("dob")}
               className="border border-gray-200 h-10 mt-1 rounded px-4 w-full bg-gray-50"
               //   placeholder="Enter Password"
             />
-            {errors.dob && (
+            {/* {errors.dob && (
               <p className="text-red-700">Date of birth is required.</p>
-            )}
+            )} */}
           </div>
 
           <div className="md:col-span-3">
@@ -522,10 +522,10 @@ export default function AddStudent() {
               className={
                 // !pImage
                 //   ? "bg-gray-200 text-slate-400 font-bold py-2 px-6 rounded"
-                `bg-slate-800 mt-6 hover:bg-slate-700 text-white font-medium py-2 px-2 text-sm rounded`
+                `bg-slate-800 mt-6 hover:bg-slate-700 text-white font-medium py-2 px-5 text-sm rounded`
               }
             >
-              ADD STUDENT
+              ADD TRAINEE
             </button>
           </div>
         </div>

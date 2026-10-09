@@ -250,10 +250,10 @@ export default function EditSupervisor() {
               className={
                 // !pImage
                 //   ? "bg-gray-200 text-slate-400 font-bold py-2 px-6 rounded"
-                `bg-slate-800 mt-6 hover:bg-slate-700 text-white font-medium py-2 px-2 text-sm rounded`
+                `bg-slate-800 mt-6 hover:bg-slate-700 hover:cursor-pointer text-white font-medium py-2 px-5 text-sm rounded`
               }
             >
-              ADD SUPERVISOR
+              UPDATE SUPERVISOR
             </button>
           </div>
         </div>

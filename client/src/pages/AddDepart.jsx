@@ -70,7 +70,7 @@ export default function AddDepart() {
       });
     // setDepart(null)
     data.depart = "";
-    toast.success("Data inserted successfully.");
+    toast.success("Department has been inserted successfully.");
   };
 
   return (

@@ -12,6 +12,7 @@ import FCPSDetail from "./pages/FCPSDetail.jsx";
 import Home from "./pages/Home.jsx";
 import UploadFile from "./pages/UploadFile.jsx";
 import EditSupervisor from "./pages/EditSupervisor.jsx";
+import TestAdd from "./pages/TestAdd.jsx";
 
 // All Reports
 import CurrentSupervisorReport from "./reports/CurrentSupervisorReport.jsx";
@@ -33,6 +34,7 @@ ReactDOM.createRoot(root).render(
       <Route path="/supervisor/:id" element={<EditSupervisor />} />
       <Route path="/detail/:id" element={<FCPSDetail />} />
       <Route path="/upload/:id" element={<UploadFile />} />
+      <Route path="/test/:name" element={<TestAdd />} />
       {/* All Report */}
       <Route path="/current_supervisor" element={<CurrentSupervisorReport />} />
       <Route path="/fcps_report" element={<CurrentFCSReport />} />

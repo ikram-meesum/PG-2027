@@ -67,6 +67,7 @@ export default function AddSupervisor() {
   const {
     register,
     watch,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm();
@@ -95,6 +96,7 @@ export default function AddSupervisor() {
 
             getSupervisorData();
             toast.success("Supervisor inserted successfully.");
+            reset();
           })
           .catch((error) => {
             console.log(error);
@@ -118,7 +120,8 @@ export default function AddSupervisor() {
         }}
       />
 
-      <div className="flex justify-center bg-amber-100 items-center">
+      {/* LOADER */}
+      {/* <div className="flex justify-center bg-amber-100 items-center">
         <ClipLoader
           color={"red"}
           loading={loading}
@@ -127,7 +130,7 @@ export default function AddSupervisor() {
           aria-label="Loading Spinner"
           data-testid="loader"
         />
-      </div>
+      </div> */}
 
       <h2 className="text-3xl text-center font-bold text-slate-700 mt-9 mb-2">
         All Supervisors Record
@@ -230,7 +233,7 @@ export default function AddSupervisor() {
               className={
                 // !pImage
                 //   ? "bg-gray-200 text-slate-400 font-bold py-2 px-6 rounded"
-                `bg-slate-800 mt-6 hover:bg-slate-700 text-white font-medium py-2 px-2 text-sm rounded`
+                `bg-slate-800 mt-6 hover:bg-slate-700 hover:cursor-pointer text-white font-medium py-2 px-4 text-sm rounded`
               }
             >
               ADD SUPERVISOR

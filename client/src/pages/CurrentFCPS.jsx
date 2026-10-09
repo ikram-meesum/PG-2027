@@ -160,7 +160,7 @@ export default function CurrentFCPS() {
             }}
             className="px-5 py-1.5 flex text-sm font-medium"
           >
-            <FaUser size={"18px"} />
+            <FaUser size={"16px"} />
             &nbsp; Add Trainee
           </button>
         </div>

@@ -108,7 +108,8 @@ export default function UploadFile() {
         .then(function (response) {
           // console.log("open file: ", response.data);
           updateData();
-          alert("Your selected file has been uploaded on server!");
+          // alert("Your selected file has been uploaded on server!");
+          navigate("/test/upload");
         })
         .catch(function (error) {
           console.log(error);
