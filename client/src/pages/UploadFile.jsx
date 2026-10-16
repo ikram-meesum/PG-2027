@@ -109,7 +109,7 @@ export default function UploadFile() {
           // console.log("open file: ", response.data);
           updateData();
           // alert("Your selected file has been uploaded on server!");
-          navigate("/test/upload");
+          navigate(`/test/upload/${id}`);
         })
         .catch(function (error) {
           console.log(error);
@@ -258,8 +258,22 @@ export default function UploadFile() {
       <section className="w-4/5 mx-auto">
         {/* show all pdf files */}
         <>
-          {}
-          <h2 className="text-2xl font-semibold mt-8">All uploaded files</h2>
+          <div className="flex justify-between">
+            <p>
+              <h2 className="text-2xl font-semibold mt-8">
+                All uploaded files
+              </h2>
+            </p>
+            <p>
+              <button
+                onClick={() => navigate("/current-fcps")}
+                className="bg-slate-800 hover:cursor-pointer hover:bg-slate-700 text-white mt-8 py-2 px-8 text-sm rounded-md"
+              >
+                Back
+              </button>
+            </p>
+          </div>
+
           <div className="my-6">
             <div className="w-l/2 mx-auto border border-slate-200 rounded-md overflow-x-auto">
               <table className="w-full">

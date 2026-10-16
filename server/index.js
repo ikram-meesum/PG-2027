@@ -12,10 +12,25 @@ const apikey = process.env.API_KEY;
 const app = express();
 app.use(cors());
 
-mongoose.connect(apikey, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const connectDB = async () => {
+  try {
+    const con = await mongoose.connect(apikey, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log(`Connected from mongodb database ${con.connection.host}`);
+  } catch (err) {
+    console.log(`Error from connected with database ${err}`);
+    process.exit(1);
+  }
+};
+
+connectDB();
+
+// mongoose.connect(apikey, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -31,6 +46,8 @@ console.log("path", express.static(path.resolve(__dirname, "upload_dox")));
 // New Routes
 const depart = require("./routes/department");
 
+const mcpsRoute = require("./routes/mcps");
+app.use("/mcps", mcpsRoute); // DONE
 //--------------------------------
 
 // Old Routes

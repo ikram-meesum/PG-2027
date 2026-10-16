@@ -8,6 +8,7 @@ import { CgAdidas } from "react-icons/cg";
 import { CgClipboard } from "react-icons/cg";
 import { CgComment } from "react-icons/cg";
 import { Link } from "react-router";
+import Animation from "../components/Animation";
 
 export default function Home() {
   let userName = sessionStorage.getItem("user_role");
@@ -16,155 +17,157 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <section>
-        <h2 className="text-slate-700 text-center mt-14 font-bold text-3xl">
-          School of Postgraduate Studies
-        </h2>
-        <p className="text-gray-600 text-center mt-3 font-semibold">
-          FCPS-II and MCPS Program
-        </p>
-        <p className="mt-20"></p>
+      <Animation>
+        <section>
+          <h2 className="text-slate-700 text-center mt-14 font-bold text-3xl">
+            School of Postgraduate Studies
+          </h2>
+          <p className="text-gray-600 text-center mt-3 font-semibold">
+            FCPS-II and MCPS Program
+          </p>
+          <p className="mt-20"></p>
 
-        <div className="grid grid-cols-3 gap-4 w-4/5 mx-auto">
-          <div className="">
-            <Link to={"/current-fcps"}>
-              <div className="relative border border-gray-200 hover:border-blue-300 hover:bg-blue-50 hover:cursor-pointer flex w-full bg-gray-50 max-w-[20rem] flex-col rounded-xl bg-clip-border text-gray-700">
-                <div className="relative mx-0 mt-4 flex items-center gap-4 overflow-hidden rounded-xl bg-transparent bg-clip-border pt-0 pb-3 text-gray-700 shadow-none">
-                  <CiSettings className="pl-3" size={"63px"} />
+          <div className="grid grid-cols-3 gap-4 w-4/5 mx-auto">
+            <div className="">
+              <Link to={"/current-fcps"}>
+                <div className="relative hover:border-blue-300 hover:bg-blue-50 hover:cursor-pointer flex w-full bg-amber-200 max-w-[20rem] flex-col rounded-xl bg-clip-border text-gray-700">
+                  <div className="relative mx-0 mt-4 flex items-center gap-4 overflow-hidden rounded-xl bg-transparent bg-clip-border pt-0 pb-3 text-gray-700 shadow-none">
+                    <CiSettings className="pl-3" size={"63px"} />
 
-                  <div className="flex w-full flex-col gap-0.5">
-                    <div className="flex items-center justify-between">
-                      <h5 className="block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-                        Current FCPS Trainees
-                      </h5>
+                    <div className="flex w-full flex-col gap-0.5">
+                      <div className="flex items-center justify-between">
+                        <h5 className="block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+                          Current FCPS Trainees
+                        </h5>
+                      </div>
+                      <p className="block font-sans text-base font-light leading-relaxed text-blue-gray-900 antialiased">
+                        Detail of FCPS Trainees
+                      </p>
                     </div>
-                    <p className="block font-sans text-base font-light leading-relaxed text-blue-gray-900 antialiased">
-                      Detail of FCPS Trainees
-                    </p>
                   </div>
                 </div>
+              </Link>
+            </div>
+            {/* second */}
+            {/* {userName !== "user" ? "e" : "s"} */}
+            <div>
+              <div>
+                <Link to={"/addstudent"}>
+                  <div className="relative hover:border-blue-300 hover:bg-blue-50 hover:cursor-pointer flex w-full bg-lime-200 max-w-[20rem] flex-col rounded-xl bg-clip-border text-gray-700 shadow-none">
+                    <div className="relative mx-0 mt-4 flex items-center gap-4 overflow-hidden rounded-xl bg-transparent bg-clip-border pt-0 pb-3 text-gray-700 shadow-none">
+                      <CgComment className="pl-3" size={"63px"} />
+
+                      <div className="flex w-full flex-col gap-0.5">
+                        <div className="flex items-center justify-between">
+                          <h5 className="block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+                            Add New FCPS-II
+                          </h5>
+                        </div>
+                        <p className="block font-sans text-base font-light leading-relaxed text-blue-gray-900 antialiased">
+                          Insert FCPS Trainees
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
               </div>
-            </Link>
-          </div>
-          {/* second */}
-          {/* {userName !== "user" ? "e" : "s"} */}
-          <div>
+            </div>
+            {/* third */}
             <div>
-              <Link to={"/addstudent"}>
-                <div className="relative border border-gray-200 hover:border-blue-300 hover:bg-blue-50 hover:cursor-pointer flex w-full bg-gray-50 max-w-[20rem] flex-col rounded-xl bg-clip-border text-gray-700 shadow-none">
-                  <div className="relative mx-0 mt-4 flex items-center gap-4 overflow-hidden rounded-xl bg-transparent bg-clip-border pt-0 pb-3 text-gray-700 shadow-none">
-                    <CgComment className="pl-3" size={"63px"} />
+              <div>
+                <Link to={"/add-depart"}>
+                  <div className="relative hover:border-blue-300 hover:bg-blue-50 hover:cursor-pointer flex w-full bg-rose-200 max-w-[20rem] flex-col rounded-xl bg-clip-border text-gray-700 shadow-none">
+                    <div className="relative mx-0 mt-4 flex items-center gap-4 overflow-hidden rounded-xl bg-transparent bg-clip-border pt-0 pb-3 text-gray-700 shadow-none">
+                      <DiStreamline className="pl-3" size={"63px"} />
 
-                    <div className="flex w-full flex-col gap-0.5">
-                      <div className="flex items-center justify-between">
-                        <h5 className="block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-                          Add New FCPS-II
-                        </h5>
+                      <div className="flex w-full flex-col gap-0.5">
+                        <div className="flex items-center justify-between">
+                          <h5 className="block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+                            Department
+                          </h5>
+                        </div>
+                        <p className="block font-sans text-base font-light leading-relaxed text-blue-gray-900 antialiased">
+                          List of Departments
+                        </p>
                       </div>
-                      <p className="block font-sans text-base font-light leading-relaxed text-blue-gray-900 antialiased">
-                        Insert FCPS Trainees
-                      </p>
                     </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             </div>
-          </div>
-          {/* third */}
-          <div>
+            {/* forth */}
             <div>
-              <Link to={"/add-depart"}>
-                <div className="relative border border-gray-200 hover:border-blue-300 hover:bg-blue-50 hover:cursor-pointer flex w-full bg-gray-50 max-w-[20rem] flex-col rounded-xl bg-clip-border text-gray-700 shadow-none">
-                  <div className="relative mx-0 mt-4 flex items-center gap-4 overflow-hidden rounded-xl bg-transparent bg-clip-border pt-0 pb-3 text-gray-700 shadow-none">
-                    <DiStreamline className="pl-3" size={"63px"} />
+              <div>
+                <Link to={"/supervisor"}>
+                  <div className="relative hover:border-blue-300 hover:bg-blue-50 hover:cursor-pointer flex w-full bg-violet-200 max-w-[20rem] flex-col rounded-xl bg-clip-border text-gray-700 shadow-none">
+                    <div className="relative mx-0 mt-4 flex items-center gap-4 overflow-hidden rounded-xl bg-transparent bg-clip-border pt-0 pb-3 text-gray-700 shadow-none">
+                      <CgAdidas className="pl-3" size={"63px"} />
 
-                    <div className="flex w-full flex-col gap-0.5">
-                      <div className="flex items-center justify-between">
-                        <h5 className="block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-                          Department
-                        </h5>
+                      <div className="flex w-full flex-col gap-0.5">
+                        <div className="flex items-center justify-between">
+                          <h5 className="block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+                            Supervisor
+                          </h5>
+                        </div>
+                        <p className="block font-sans text-base font-light leading-relaxed text-blue-gray-900 antialiased">
+                          Detail of Supervisor
+                        </p>
                       </div>
-                      <p className="block font-sans text-base font-light leading-relaxed text-blue-gray-900 antialiased">
-                        List of Departments
-                      </p>
                     </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             </div>
-          </div>
-          {/* forth */}
-          <div>
+            {/* fifth */}
             <div>
-              <Link to={"/supervisor"}>
-                <div className="relative border border-gray-200 hover:border-blue-300 hover:bg-blue-50 hover:cursor-pointer flex w-full bg-gray-50 max-w-[20rem] flex-col rounded-xl bg-clip-border text-gray-700 shadow-none">
-                  <div className="relative mx-0 mt-4 flex items-center gap-4 overflow-hidden rounded-xl bg-transparent bg-clip-border pt-0 pb-3 text-gray-700 shadow-none">
-                    <CgAdidas className="pl-3" size={"63px"} />
+              <div>
+                <Link to={"/home"}>
+                  <div className="relative hover:border-blue-300 hover:bg-blue-50 hover:cursor-pointer flex w-full bg-teal-200 max-w-[20rem] flex-col rounded-xl bg-clip-border text-gray-700 shadow-none">
+                    <div className="relative mx-0 mt-4 flex items-center gap-4 overflow-hidden rounded-xl bg-transparent bg-clip-border pt-0 pb-3 text-gray-700 shadow-none">
+                      <CgClipboard className="pl-3" size={"63px"} />
 
-                    <div className="flex w-full flex-col gap-0.5">
-                      <div className="flex items-center justify-between">
-                        <h5 className="block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-                          Supervisor
-                        </h5>
+                      <div className="flex w-full flex-col gap-0.5">
+                        <div className="flex items-center justify-between">
+                          <h5 className="block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+                            Current MCPS Trainees
+                          </h5>
+                        </div>
+                        <p className="block font-sans text-base font-light leading-relaxed text-blue-gray-900 antialiased">
+                          Detail of MCPS Trainees
+                        </p>
                       </div>
-                      <p className="block font-sans text-base font-light leading-relaxed text-blue-gray-900 antialiased">
-                        Detail of Supervisor
-                      </p>
                     </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             </div>
-          </div>
-          {/* fifth */}
-          <div>
+            {/* sixth */}
             <div>
-              <Link to={"/home"}>
-                <div className="relative border border-gray-200 hover:border-blue-300 hover:bg-blue-50 hover:cursor-pointer flex w-full bg-gray-50 max-w-[20rem] flex-col rounded-xl bg-clip-border text-gray-700 shadow-none">
-                  <div className="relative mx-0 mt-4 flex items-center gap-4 overflow-hidden rounded-xl bg-transparent bg-clip-border pt-0 pb-3 text-gray-700 shadow-none">
-                    <CgClipboard className="pl-3" size={"63px"} />
+              <div>
+                <Link to={"/home"}>
+                  <div className="relative border border-gray-200 hover:border-blue-300 hover:bg-blue-50 hover:cursor-pointer flex w-full bg-gray-50 max-w-[20rem] flex-col rounded-xl bg-clip-border text-gray-700 shadow-none">
+                    <div className="relative mx-0 mt-4 flex items-center gap-4 overflow-hidden rounded-xl bg-transparent bg-clip-border pt-0 pb-3 text-gray-700 shadow-none">
+                      <CiSun className="pl-3" size={"63px"} />
 
-                    <div className="flex w-full flex-col gap-0.5">
-                      <div className="flex items-center justify-between">
-                        <h5 className="block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-                          Current MCPS Trainees
-                        </h5>
+                      <div className="flex w-full flex-col gap-0.5">
+                        <div className="flex items-center justify-between">
+                          <h5 className="block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+                            Coming Soon
+                          </h5>
+                        </div>
+                        <p className="block font-sans text-base font-light leading-relaxed text-blue-gray-900 antialiased">
+                          coming soon...
+                        </p>
                       </div>
-                      <p className="block font-sans text-base font-light leading-relaxed text-blue-gray-900 antialiased">
-                        Detail of MCPS Trainees
-                      </p>
                     </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             </div>
           </div>
-          {/* sixth */}
-          <div>
-            <div>
-              <Link to={"/home"}>
-                <div className="relative border border-gray-200 hover:border-blue-300 hover:bg-blue-50 hover:cursor-pointer flex w-full bg-gray-50 max-w-[20rem] flex-col rounded-xl bg-clip-border text-gray-700 shadow-none">
-                  <div className="relative mx-0 mt-4 flex items-center gap-4 overflow-hidden rounded-xl bg-transparent bg-clip-border pt-0 pb-3 text-gray-700 shadow-none">
-                    <CiSun className="pl-3" size={"63px"} />
-
-                    <div className="flex w-full flex-col gap-0.5">
-                      <div className="flex items-center justify-between">
-                        <h5 className="block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-                          Coming Soon
-                        </h5>
-                      </div>
-                      <p className="block font-sans text-base font-light leading-relaxed text-blue-gray-900 antialiased">
-                        coming soon...
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </div>
-          </div>
-        </div>
-        {/* <!-- component --> */}
-      </section>
+          {/* <!-- component --> */}
+        </section>
+      </Animation>
     </>
   );
 }

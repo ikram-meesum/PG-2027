@@ -12,7 +12,8 @@ export default function TestAdd() {
     if (name == "fcps") {
       navigate("/current-fcps");
     } else if (name == "upload") {
-      navigate("/current-fcps");
+      // navigate("/current-fcps");
+      console.log("upload");
     }
   });
 
