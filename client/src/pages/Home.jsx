@@ -121,7 +121,7 @@ export default function Home() {
             {/* fifth */}
             <div>
               <div>
-                <Link to={"/home"}>
+                <Link to={"/mcps"}>
                   <div className="relative hover:border-blue-300 hover:bg-blue-50 hover:cursor-pointer flex w-full bg-teal-200 max-w-[20rem] flex-col rounded-xl bg-clip-border text-gray-700 shadow-none">
                     <div className="relative mx-0 mt-4 flex items-center gap-4 overflow-hidden rounded-xl bg-transparent bg-clip-border pt-0 pb-3 text-gray-700 shadow-none">
                       <CgClipboard className="pl-3" size={"63px"} />

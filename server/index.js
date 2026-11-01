@@ -14,10 +14,7 @@ app.use(cors());
 
 const connectDB = async () => {
   try {
-    const con = await mongoose.connect(apikey, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    const con = await mongoose.connect(apikey);
     console.log(`Connected from mongodb database ${con.connection.host}`);
   } catch (err) {
     console.log(`Error from connected with database ${err}`);

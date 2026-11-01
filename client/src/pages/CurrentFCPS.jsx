@@ -124,7 +124,7 @@ export default function CurrentFCPS() {
       <Navbar />
       <Animation>
         <h2 className="text-3xl text-center font-bold text-slate-700 mt-9 mb-2">
-          All Students Record
+          All FCPS-II Trinees Record
         </h2>
         <h2 className="text-sm text-center font-medium mb-9 text-slate-600">
           FCPS-II Postgraduate Trainees

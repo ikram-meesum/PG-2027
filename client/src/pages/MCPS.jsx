@@ -102,6 +102,7 @@ export default function MCPS() {
         })
         .then((response) => {
           console.log("r: ", response.data);
+          navigate("/mcps");
 
           // setSupervisor([
           //   ...supervisor,
@@ -116,7 +117,6 @@ export default function MCPS() {
         .catch((error) => {
           console.log(error);
         });
-      //   navigate("/test/fcps");
     }
   };
 
